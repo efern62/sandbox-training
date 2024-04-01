@@ -7,4 +7,3 @@ data "terraform_remote_state" "iac_state" {
 locals {
   sandbox_outputs = data.terraform_remote_state.iac_state.outputs.sandbox_projects.sandbox_outputs
 }
-
