@@ -12,7 +12,7 @@
       apt: 
         upgrade: yes
 
-        name: install apache2 packages
+    - name: Install apache2 packages
       apt: 
         name: apache2
         state: absent

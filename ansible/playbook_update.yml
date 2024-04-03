@@ -1,8 +1,9 @@
 ---
-- hosts: all
+- hosts: webservers
   become: true
   tasks:
-    - name: Update apt repo and cache on all Ubuntu boxes
+
+    - name: Update apt repository index on all Ubuntu boxes
       apt: 
         update_cache: yes
         force_apt_get: yes
@@ -12,7 +13,7 @@
       apt: 
         upgrade: yes
 
-        name: install apache2 packages
+    - name: install apache2 packages
       apt: 
         name: apache2
         state: latest
