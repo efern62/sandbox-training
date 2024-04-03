@@ -1,13 +1,22 @@
 ---
-- hosts: all
+- hosts: webservers
   become: true
-  become_user:userx
   tasks:
-    - name: Update apt repo and cache on all Debian/Ubuntu boxes
-      apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
+
+    - name: Update apt repository index on all Ubuntu boxes
+      apt: 
+        update_cache: yes
+        force_apt_get: yes
+        cache_valid_time: 3600
 
     - name: Upgrade all packages on servers
-      apt: upgrade=dist force_apt_get=yes
+      apt: 
+        upgrade: yes
+
+    - name: install apache2 packages
+      apt: 
+        name: apache2
+        state: latest
 
     - name: Check if a reboot is needed on all servers
       register: reboot_required_file
